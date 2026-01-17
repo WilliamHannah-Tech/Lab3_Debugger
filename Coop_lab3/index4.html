@@ -1,0 +1,118 @@
+<!-- Expected output: This page should display a list of players with their scores, compute the average score, highest and lowest scores, and display them on the page. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scoreboard</title>
+    <style>
+    body { font-family: Tahoma, sans-serif; }
+    table { border-collapse: collapse; width: 50%; }
+    th, td { border: 1px solid #333; padding: 5px; text-align: left; }
+    .summary { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Game Scoreboard</h1>
+    <table id="scoreTable">
+        <thead>
+            <tr><th>Player</th><th>Score</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Alice</td><td>80</td></tr>
+            <tr><td>Bob</td><td>95</td></tr>
+            <tr><td>Charlie</td><td>70</td></tr>
+            <tr><td>Dave</td><td>85</td></tr>
+        </tbody>
+    </table>
+    <div id="summary" class="summary"></div>
+    <script>
+        // Function to calculate summary statistics from the table
+        function calculateScores() {
+            var rows = document.querySelectorAll("#scoreTable tbody tr");
+            var scores = [];
+            for (var i = 0; i < rows.length; i++) { // logic error: <= leads to undefined
+                var cells = rows[i].children;
+                var score = cells[1].innerText;
+                scores.push(parseInt(score));
+            }
+            var sum = 0;
+            for (var j = 0; j < scores.length; j++) {
+                sum = sum + scores[j];
+            }
+            var average = sum / scores.length;
+            var max = Math.max.apply(null, scores); // logic error: min used instead of max
+            var min = Math.min.apply(null, scores); // logic error: max used instead of min
+            return { avg: average, highest: max, lowest: min };
+        }
+
+        function displaySummary() {
+            var stats = calculateScores();
+            var div = document.getElementById("summary");
+            div.innerHTML = "Average: " + stats.avg.toFixed(2) + "<br>";
+            div.innerHTML += "Highest: " + stats.highest + "<br>";
+            div.innerHTML += "Lowest: " + stats.lowest;
+        }
+
+        // Called on page load
+        window.onload = function() {
+            displaySummary();
+        }
+
+        // Extra code to add players dynamically
+        function addPlayer(name, score) {
+            var tbody = document.querySelector("#scoreTable tbody");
+            var tr = document.createElement("tr");
+            var tdName = document.createElement("td");
+            var tdScore = document.createElement("td");
+            tdName.innerText = name;
+            tdScore.innerText = score;
+            tr.appendChild(tdName);
+            tr.appendChild(tdScore);
+            tbody.appendChild(tr);
+            displaySummary();
+        }
+
+        // Dummy function with syntax error and logic error
+        function analyzeScores(arr) {
+            var total = 0;
+            for (var k = 0; k < arr.length; k++) {
+                total += arr[k];
+            }
+            var avg = total / arr.length;
+            // Logic error: returns wrong property names
+            return { average: avg, max: Math.max.apply(null, arr), min: Math.min.apply(null, arr) };
+        }
+
+        // Another example of incorrect conditional
+        function checkWinner(score) {
+            if (score >= 90) {
+                console.log("Winner!");
+            } else if (score < 50) {
+                console.log("Lose");
+            } else { // syntax error: missing closing parenthesis }
+                console.log("Average performer");
+            }
+        }
+
+        // Miscellaneous loops to extend the file
+        var sample = [10, 20, 30, 40];
+        for (var m = 0; m < sample.length; m++) {
+            for (var n = 0; n < 2; n++) {
+                console.log("Multiplying " + sample[m] + " and " + n);
+            }
+        }
+
+        var index = 5;
+        while (index > 0) {
+            index++; // logic error: increments instead of decrements
+            if (index > 20) break;
+        }
+
+        var flag = "player";
+        if (flag) { // always true because non-empty string
+            console.log("Flag is truthy");
+        }
+
+        // Intentionally leaving out a closing brace for script to create syntax error
+    </script>
+</body>
+</html>
