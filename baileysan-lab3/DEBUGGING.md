@@ -76,13 +76,14 @@ truthy
 Line 91 in the `index4.html` file. Needed a closing bracket from the previous else if statement on Line 89 . Added { to cure. Included in the index.html section.
 
 - Fixed line 31 logic error. Replaced '0' with len(numbers) to cure.
-    ```
+```
 avg = total / len(numbers)
-    ```
+```
 - Fixed line 92: Added '-' in place of '+' to cure.
-    ```
+
+```
 counter -= 1
-    ```
+```
 THIS HAS CONCLUDED THE PYTHON FILE FIXES
 
 Python file run after some updates in the other files:
@@ -131,11 +132,11 @@ ______
 Line 110 else { // syntax error: missing closing parenthesis`
 
 - Added closing bracket at line 110 before else statement to cure.
-    ```
+```
 } else { // syntax error: ~missing closing parenthesis~
-    ```
+```
 - Ran the script4 file again and the following output occured:
-    ```
+```
 ❯ node script4.js
 Average score: 82.5
 Highest score: Infinity
@@ -173,7 +174,7 @@ i: 1 j: 0
 i: 1 j: 1
 i: 2 j: 0
 i: 2 j: 1
-    ```
+```
 - Highest score and Lowest score seems to not be displaying numerical value. Per Line 100 in the script4.js file, there was an comment stating logical error, increment instead of decrement. Since the cnt entries are counting upward, the script needs to be adjusted to reflect the decrement.
 - Fixes: Line 27 `var max = Infinity` needs to be revised to `var max = -Infinity;`
 - Line 28 `var min = -Infinity;` needs to be revised to `var min = Infinity;`
@@ -186,8 +187,8 @@ var min =  Infinity;
     if (players.length === 0)
     ```
 - After implementing these fixes, current output:
-    ```
-    Average score: 82.5
+```
+Average score: 82.5
 Highest score: 95
 Lowest score: 70
 Average score: 85
@@ -208,12 +209,12 @@ i: 1 j: 0
 i: 1 j: 1
 i: 2 j: 0
 i: 2 j: 1
-    ```
+```
 ________
 # script4.sh
 - To run the script, command `bash script4.sh` is needed but it needs a file name or else it returns blank. It needs to run with a file name. I used the numbers.txt that I created: `bash script4.sh numbers.txt`
-- The follow output from running the script4.sh highlighted some errors:
-    ```
+- The following output from running the script4.sh highlighted some errors:
+```
 ❯ bash script4.sh numbers.txt
 Lines:        3
 Words:        4
@@ -225,10 +226,10 @@ Average words per line:
 3: 70
 script4.sh: line 76: syntax error near unexpected token `else'
 script4.sh: line 76: `    else'
-    ```
+```
 - Line 23 logic error noted. avg_words=$((word_count / 0)).
 - Line 24 Replaced with  avg_words=$((word_count / line_count))
-    ```
+```
 avg_words=$((word_count / line_count))
 ❯ bash script4.sh numbers.txt
 Lines:        3
@@ -240,13 +241,13 @@ Average words per line: 1
 3: 70
 script4.sh: line 76: syntax error near unexpected token `else'
 script4.sh: line 76: `    else'
-    ```
+```
 - Line 34 mentions another syntax error, and there was an opening bracket but missing the closing bracket was missing. Added } on line 44 to cure.
-    ```
+```
         echo $longest
     # Missing closing brace intentionally. # Added closing bracket to cure.-A.D.
 } 
-    ```
+```
 - Line 65 has logic error, changed increment to decrement
     ```
     counter=$((counter - 1))
