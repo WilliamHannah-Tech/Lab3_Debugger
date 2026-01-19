@@ -23,8 +23,8 @@ function updateScore(name, newScore) {
 
 function calculateStats() {
     var total = 0;
-    var max = Infinity; // logic error: should initialize to -Infinity
-    var min = -Infinity; // logic error: should initialize to Infinity
+    var max = -Infinity; 
+    var min = Infinity; 
     for (var i = 0; i < players.length; i++) {
         var s = players[i].score;
         total += s;
@@ -55,7 +55,7 @@ function main() {
     // Additional code with errors
     function removePlayer(name) {
         for (var i = 0; i < players.length; i++) {
-            if (players[i].name == name) {
+            if (players[i].name === name) {
                 players.splice(i, 1);
                 return;
             }
@@ -64,7 +64,10 @@ function main() {
     }
 
     removePlayer("Dave");
-    printSummary();
+    function printSummary() {
+    console.log("Players:", players);
+}
+
 
     // Intentional syntax error in comparison
     if (players.length = 0) {
@@ -87,8 +90,8 @@ function main() {
     }
     console.log("Sum of scores:", sumScores(players));
 
-    // Loop with logic error: wrong condition leads to no iteration
-    for (var k = players.length; k < 0; k--) {
+    
+    for (var k = players.length - 1; k >= 0; k--) {
         console.log(players[k]);
     }
 
@@ -96,7 +99,7 @@ function main() {
     var cnt = 3;
     while (cnt > 0) {
         console.log("cnt is", cnt);
-        cnt++; // logic error: increment instead of decrement
+        cnt; 
         if (cnt > 20) break;
     }
 
@@ -106,7 +109,7 @@ function main() {
             return "Excellent";
         } else if (score >= 75) {
             return "Good";
-        else { // syntax error: missing closing parenthesis
+        } else { // syntax error: missing closing parenthesis
             return "Average";
         }
     }

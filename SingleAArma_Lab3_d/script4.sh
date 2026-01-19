@@ -32,7 +32,7 @@ while read -r line; do
 done < "$file"
 
 # Function with syntax error to find longest word
-find_longest() {
+find_longest() 
     local longest=""
     for w in "$@"; do
         if [ ${#w} -gt ${#longest} ]; then

@@ -29,7 +29,7 @@
         function calculateScores() {
             var rows = document.querySelectorAll("#scoreTable tbody tr");
             var scores = [];
-            for (var i = 0; i <= rows.length; i++) { // logic error: <= leads to undefined
+            for (var i = 0; i < rows.length; i++) { 
                 var cells = rows[i].children;
                 var score = cells[1].innerText;
                 scores.push(parseInt(score));
@@ -39,8 +39,8 @@
                 sum = sum + scores[j];
             }
             var average = sum / scores.length;
-            var max = Math.min.apply(null, scores); // logic error: min used instead of max
-            var min = Math.max.apply(null, scores); // logic error: max used instead of min
+            var max = Math.max.apply(null, scores); 
+            var min = Math.min.apply(null, scores); 
             return { avg: average, highest: max, lowest: min };
         }
 
@@ -79,7 +79,7 @@
             }
             var avg = total / arr.length;
             // Logic error: returns wrong property names
-            return { average: avg, max: Math.min.apply(null, arr), min: Math.max.apply(null, arr) };
+            return { average: avg, max: Math.max.apply(null, arr), min: Math.min.apply(null, arr) };
         }
 
         // Another example of incorrect conditional
@@ -88,7 +88,7 @@
                 console.log("Winner!");
             } else if (score < 50) {
                 console.log("Lose");
-            else { // syntax error: missing closing parenthesis
+            } else { // syntax error: missing closing parenthesis
                 console.log("Average performer");
             }
         }
